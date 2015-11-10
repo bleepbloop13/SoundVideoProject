@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Sound Video Project</string>
+
+    <string name="playButtonText">play</string>
+    <string name="pauseButtonText">pause</string>
+    <string name="homeButtonText">Back to Sound</string>
+    <string name="stopButtonText">stop</string>
+    <string name="videoButtonText">watch the video :)</string>
+    <string name="action_settings">Settings</string>
+</resources>
