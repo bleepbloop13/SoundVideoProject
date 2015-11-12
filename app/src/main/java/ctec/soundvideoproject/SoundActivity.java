@@ -9,7 +9,7 @@ import android.os.Bundle;
 
 /**
  * @author Rory Baker
- * @version 1.0 Base fundamentals covered in video.
+ * @version 1.1 Added a switch to change songs
  */
 
 public class SoundActivity extends Activity implements Runnable
@@ -21,6 +21,7 @@ public class SoundActivity extends Activity implements Runnable
     private MediaPlayer soundPlayer;
     private SeekBar soundSeekBar;
     private Thread soundThread;
+    private Switch soundSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,6 +35,7 @@ public class SoundActivity extends Activity implements Runnable
         videoButton = (Button) findViewById(R.id.videoButton);
         soundSeekBar = (SeekBar) findViewById(R.id.soundSeekBar);
         soundPlayer = MediaPlayer.create(this.getBaseContext(), R.raw.in_the_garage);
+        soundSwitch = (Switch) findViewById(R.id.songSwitch);
 
         setupListeners();
 
@@ -67,7 +69,15 @@ public class SoundActivity extends Activity implements Runnable
             public void onClick(View view)
             {
                 soundPlayer.stop();
-                soundPlayer = MediaPlayer.create(getBaseContext(), R.raw.in_the_garage);
+                if(soundSwitch.isChecked())
+                {
+                    soundPlayer = MediaPlayer.create(getBaseContext(), R.raw.in_the_garage);
+                }
+                else
+                {
+                    soundPlayer = MediaPlayer.create(getBaseContext(), R.raw.i_dont_want_loving);
+                }
+
             }
         });
 
@@ -102,6 +112,27 @@ public class SoundActivity extends Activity implements Runnable
                 }
             }
         });
+
+        soundSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton button, boolean isChecked)
+            {
+                soundPlayer.stop();
+
+                if(isChecked)
+                {
+                    soundPlayer = MediaPlayer.create(getBaseContext(), R.raw.in_the_garage);
+
+                }
+                else
+                {
+                    soundPlayer = MediaPlayer.create(getBaseContext(),R.raw.i_dont_want_loving);
+                }
+
+            }
+        });
+
     }
 
     /**
