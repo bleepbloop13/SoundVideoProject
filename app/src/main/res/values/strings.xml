@@ -6,5 +6,6 @@
     <string name="homeButtonText">Back to Sound</string>
     <string name="stopButtonText">stop</string>
     <string name="videoButtonText">watch the video :)</string>
+    <string name="songSwitch">Switch Songs :)</string>
     <string name="action_settings">Settings</string>
 </resources>
